@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#171717" />
+    <meta name="description" content="璞信电力画册在线翻页预览" />
+    <title>璞信电力画册翻页阅读</title>
+    <link rel="stylesheet" href="styles.css?v=22" />
+  </head>
+  <body>
+    <main class="viewer-shell">
+      <header class="topbar" aria-label="画册工具栏">
+        <div class="brand">
+          <span class="brand-book" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M5 4.5h5.2c1 0 1.8.8 1.8 1.8v13.2c0-1-.8-1.8-1.8-1.8H5V4.5Z" />
+              <path d="M19 4.5h-5.2c-1 0-1.8.8-1.8 1.8v13.2c0-1 .8-1.8 1.8-1.8H19V4.5Z" />
+              <path d="M12 6.2v13.3" />
+            </svg>
+          </span>
+          <h1 id="catalogTitle">璞信电力画册</h1>
+        </div>
+
+        <div class="toolbar">
+          <button class="icon-button" id="prevBtn" type="button" aria-label="上一页" title="上一页">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15 18 9 12l6-6" />
+            </svg>
+          </button>
+          <span class="page-count" id="pageCount">-- / --</span>
+          <button class="icon-button" id="nextBtn" type="button" aria-label="下一页" title="下一页">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </button>
+          <button class="icon-button" id="fullscreenBtn" type="button" aria-label="全屏预览" title="全屏预览">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3" />
+              <path d="M16 3h3a2 2 0 0 1 2 2v3" />
+              <path d="M8 21H5a2 2 0 0 1-2-2v-3" />
+              <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
+            </svg>
+          </button>
+          <button class="icon-button" id="themeBtn" type="button" aria-label="切换浅色背景" title="切换浅色背景">
+            <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 4V2" />
+              <path d="M12 22v-2" />
+              <path d="m4.93 4.93 1.41 1.41" />
+              <path d="m17.66 17.66 1.41 1.41" />
+              <path d="M2 12h2" />
+              <path d="M20 12h2" />
+              <path d="m6.34 17.66-1.41 1.41" />
+              <path d="m19.07 4.93-1.41 1.41" />
+              <circle cx="12" cy="12" r="4" />
+            </svg>
+            <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18.8 15.4A7.4 7.4 0 0 1 8.6 5.2 7.7 7.7 0 1 0 18.8 15.4Z" />
+            </svg>
+          </button>
+          <a class="download-button" id="downloadBtn" href="pxdl.pdf" download>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3v12" />
+              <path d="m7 10 5 5 5-5" />
+              <path d="M5 21h14" />
+            </svg>
+            <span>下载PDF</span>
+          </a>
+        </div>
+      </header>
+
+      <section class="stage" id="stage" aria-live="polite">
+        <div class="ambient ambient-a" aria-hidden="true"></div>
+        <div class="ambient ambient-b" aria-hidden="true"></div>
+
+        <div class="state-panel" id="loadingPanel">
+          <div class="skeleton-book">
+            <span></span>
+            <span></span>
+          </div>
+          <p>正在装订画册...</p>
+        </div>
+
+        <div class="state-panel error-panel" id="errorPanel" hidden>
+          <h2>PDF 暂时无法加载</h2>
+          <p>
+            请使用本地服务器或正式服务器打开 <strong>pxdl.html</strong>，不要直接用
+            <strong>file://</strong> 方式预览。
+          </p>
+        </div>
+
+        <div class="book-wrap" id="bookWrap" hidden>
+          <div id="flipbook" class="flipbook"></div>
+        </div>
+      </section>
+
+      <footer class="hintbar">
+        <span>拖拽页角、点击、滚轮都可以翻页</span>
+      </footer>
+    </main>
+
+    <script src="vendor/page-flip.browser.min.js"></script>
+    <script src="app.js?v=17" type="module"></script>
+  </body>
+</html>
